@@ -18,7 +18,7 @@ def withCash(uID):
     complete = False
     while complete != True:
         cashOut = input("Withdrawal Amount: ")
-        if type(cashOut) is int == False:
+        if cashOut.isdigit() == False:
             print("Stop it, how did you even do that? This ATM doesn't even have that button!")
         else:
             if uID == "101":
@@ -46,20 +46,26 @@ def withCash(uID):
 def menu(uID, pWord):
     if (uID == "101" and pWord == "1234"):
                 choice = input("Would you like to: (1) Check your balance or (2) Withdraw Cash")
-                if choice == "1":
-                    balCheck(uID)
-                elif choice == "2":
-                    withCash(uID)
+                if choice.isdigit():
+                    if choice == "1":
+                        balCheck(uID)
+                    elif choice == "2":
+                        withCash(uID)
+                    else:
+                        print("Invalid Choice. Please pick 1 or 2. ")
                 else:
-                    print("Invalid Choice. Please pick 1 or 2. ")
+                    print("Invalid Choice. Please pick 1 or 2.")
     elif (uID == "102" and pWord == "9876"):
                 choice = input("Would you like to: (1) Check your balance or (2) Withdraw Cash")
-                if choice == "1":
-                    balCheck(uID)
-                elif choice == "2":
-                    withCash(uID)
+                if choice.isdigit():
+                    if choice == "1":
+                        balCheck(uID)
+                    elif choice == "2":
+                        withCash(uID)
+                    else:
+                        print("Invalid Choice. Please pick 1 or 2. ")
                 else:
-                    print("Invalid Choice. Please pick 1 or 2. ")
+                    print("Invalid Choice. Please pick 1 or 2.")
 
 def checkLogin(uID, pWord):
     # Checks that username is valid
@@ -75,4 +81,7 @@ while True:
     # Requests user to login
     uID = input("User ID: ")
     uPass = input("Password: ")
-    checkLogin(uID, uPass)
+    if uID.isdigit() and uPass.isdigit():
+        checkLogin(uID, uPass)
+    else:
+        print("Invalid input")
